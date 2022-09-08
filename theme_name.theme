@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\Core\Url;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Component\Utility\Unicode;
+
+/**
+ * Implements hook_library_info_build().
+ *
+ * Generate libraries for all components if they don't already exist.
+ * The library name will mapped be the name of the source CSS / JS file,
+ * e.g. site_header.css will be mapped to `{THEME}/site_header`.
+ *
+ * For BOTH CSS and JS files to be linked, they *must* be named the same!
+ *
+ * TODO: If the library already exists, add the CSS / JS file to the existing
+ *       library (if it's not already there).
+ */
+function theme_name_library_info_build() {
+  // Define libraries based on the components.
+  $extensions = ['scss', 'js'];
+  $directory = 'themes/custom/theme_name/components';
+  $dist = '/themes/custom/theme_name/dist';
+  $extensions = array_map('preg_quote', $extensions);
+  $extensions = implode('|', $extensions);
+  $file_scan = \Drupal::service('file_system')->scanDirectory($directory, "/{$extensions}$/");
+  $libraries = [];
+
+  foreach ($file_scan as $file) {
+    $parts = explode('.', $file->filename);
+    $extension = end($parts);
+    $isAtom = strpos($file->uri, '00-base') ||
+      (strpos($file->uri, '01-atoms') && strpos($file->uri, '.scss')) ||
+      strpos($file->uri, 'components/base.scss') ||
+      strpos($file->uri, 'components/_imports.scss') ||
+      strpos($file->uri, 'components/style.scss');
+
+    if (!$isAtom) {
+      switch ($extension) {
+        case 'scss':
+          $libraries[$file->name]['css'] = [
+            'component' => [
+              $dist . '/' . $file->name . '.css' => [],
+            ],
+          ];
+          break;
+
+        case 'js':
+          if (strpos($file->name, '.stories') == FALSE) {
+            $js_dir = explode($directory . '/', $file->uri)[1];
+            $libraries[$file->name][$extension] = [
+              $dist . '/js/' . $js_dir => [],
+            ];
+          }
+          break;
+      }
+    }
+  }
+
+  return $libraries;
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ * Add content type theme hook suggestions.
+ */
+function theme_name_theme_suggestions_page_alter(&$suggestions) {
+  if ($node = \Drupal::request()->attributes->get('node')) {
+    if (!is_object($node)) {
+      $node = \Drupal::request()->attributes->get('node_revision');
+      $node = \Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->loadRevision($node);
+    }
+    if (is_object($node)) {
+      array_splice($suggestions, 1, 0, 'page__node__' . $node->getType());
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function theme_preprocess_paragraph(&$variables) {
+}

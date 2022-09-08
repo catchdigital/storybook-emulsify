@@ -1,0 +1,37 @@
+@import '../../imports.scss';
+
+.card {
+  width: 40rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: $padding-large;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus-within,
+  &:active {
+    box-shadow: 0 0 0 0.4rem clr(bright-blue);
+  }
+}
+
+.card__content {
+  width: 100%;
+  background-color: clr(wht);
+  padding: $padding-default $padding-small;
+  border: 1px solid $light-grey;
+  border-top: 0;
+}
+
+.card__date {
+  line-height: 1.5;
+
+  .icon {
+    display: inline-block;
+    height: 1.7rem;
+    margin-top: 0.3rem;
+    margin-right: $space-one-half;
+    vertical-align: text-top ;
+    width: 1.7rem;
+  }
+}

@@ -1,0 +1,120 @@
+// @import "../../../imports";
+
+/* Create a mixin for paragraph styles that can be implemented
+ * in components with other classnames.
+*/
+@mixin paragraph($margin: 0 0 1rem) {
+  margin: $margin;
+  line-height: 1.5;
+}
+
+p,
+.paragraph {
+  @include paragraph;
+}
+
+blockquote,
+.blockquote {
+  border-left: 0.2rem solid clr(bright-blue-light);
+  color: clr(text);
+  font-style: italic;
+  margin: $padding-large 0;
+  padding: 0 0 0 $padding-default;
+
+  @include large {
+    padding-left: $padding-default*3;
+  }
+}
+
+hr,
+.hr {
+  border-style: solid;
+  border-width: 0.1rem 0 0;
+  color: currentColor;
+}
+
+// .text--large {
+//   @include fntpair(body-1);
+// }
+
+// .paragraph--xs {
+//   @include fntpair(body-xs);
+// }
+
+// .text--small {
+//   @include fntpair(body-3);
+// }
+
+// .paragraph--medium {
+//   @include fntpair(body-2);
+// }
+
+// .paragraph--strong {
+//   font-weight: $font-semibold;
+// }
+
+.paragraph--extra-margin-bottom {
+  margin-bottom: $space-double;
+}
+
+.paragraph--no-margin {
+  margin: 0;
+}
+
+// .field--type-date-recur-inc-exc {
+//   &.name-value {
+//     display: block;
+//     @include large {
+//       display: flex;
+//     }
+//     > .name-value__name {
+//       display: block;
+//       @include large {
+//         display: inline-block;
+//       }
+//     }
+//   }
+
+  // .date-recur__item {
+  //   margin-bottom: $padding-default;
+  // }
+  // .date-recur-occurrences {
+  //   .name-value {
+  //     margin-bottom: 0;
+  //   }
+  //   .name-value__name {
+  //     font-weight: normal;
+  //     margin-right: $space-one-half;
+  //   }
+  // }
+
+//   .accordion {
+//     border: 0;
+//     border-radius: 0;
+//   }
+
+//   .accordion__heading {
+//     color: $link-colour;
+//     display: flex;
+//     justify-content: flex-start;
+//     padding-left: 0;
+//     padding-top: 0;
+
+//     .icon {
+//       color: inherit;
+//       position: static;
+//       transform: none;
+//       margin-top: 0.3rem;
+//     }
+
+//     &.is-active .icon {
+//       transform: rotate(180deg);
+//     }
+
+//     button {
+//       color: inherit;
+//       font-weight: normal;
+//       padding: 0;
+//     }
+//   }
+// }

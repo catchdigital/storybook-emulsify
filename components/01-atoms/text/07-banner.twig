@@ -1,0 +1,18 @@
+{#
+/**
+ * Available variables:
+ * - banner_base_class - the base classname
+ * - banner__modifiers - array of modifiers to add to the base classname to identify what type of banner
+ * - banner_blockname - blockname prepended to the base classname
+ *
+ * - banner__content - the content of the banner (typically text)
+ */
+#}
+{% set banner_base_class = banner_base_class|default('banner') %}
+
+<div
+  {{ bem(banner_base_class, banner__modifiers, banner_blockname, banner_extraclasses) }}
+  role="contentinfo"
+>
+  {{ banner__content }}
+</div>

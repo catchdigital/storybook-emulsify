@@ -1,0 +1,72 @@
+.alert,
+.alert-info {
+  background-color: clr(black-blue);
+  // background-image: url(#{$images}/icons/exclamation-blue.svg);
+  // background-position: $padding-default 50%;
+  // background-repeat: no-repeat;
+  // background-size: auto 3.3rem;
+  color: clr(text-inverse);
+  font-weight: 600;
+  margin-bottom: $padding-large;
+  padding: $padding-large;
+  position: relative;
+
+  h2,
+  h3,
+  a {
+    color: inherit;
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 0;
+  }
+}
+
+.alert--warning,
+.alert-warning {
+  background-color: clr(text);
+}
+
+.alert--danger,
+.alert-danger {
+  background-color: clr(bright);
+}
+
+.alert--policy,
+.alert-policy {
+  background-color: clr(text-inverse);
+  color: clr(text);
+  border-radius: $border-radius;
+  border: 0.1rem solid clr(bright-orange);
+  border-left-width: 0.8rem;
+  font-weight: 400;
+}
+
+.alert--notice,
+.alert-notice {
+  background-color: clr(text-inverse);
+  color: clr(text);
+  border-radius: $border-radius;
+  border: 0.1rem solid clr(bright-blue-light);
+  border-left-width: 0.8rem;
+  font-weight: 400;
+}
+
+@include medium {
+
+  .alert__icon {
+    position: absolute;
+  }
+
+  .alert--icon .alert__content {
+    margin-left: $space-quintuple;
+  }
+}
+
+@include large {
+  .alert,
+  .alert-info {
+    background-position: 2rem 50%;
+  }
+}
+

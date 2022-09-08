@@ -1,0 +1,58 @@
+// Color variables - it is better to use the colors in
+// components/00-base/01-colors/_01-colors-used.scss rather than
+// these colors directly.
+$black: #111;
+$off-black: #222;
+$dark-grey: #333;
+$grey: #595959;
+$light-grey: #888;
+$lighter-grey: #ccc;
+$off-white: #f5f5f1;
+$white: #fff;
+$black-blue: #122940;
+$bg-color: #f5f5f0;
+
+// Brand Colour
+$brand-primary: #002395;
+$brand-primary-dark: #273971;
+$dark-blue: #003280;
+
+// Bright Palette
+$bright-orange: #ef7d00;
+$bright-yellow: #ffde14;
+$bright-green-light: #c8d300;
+$bright-green: #81b13e;
+$bright-turquoise: #00aba0;
+$bright-blue: #005fc5;
+$bright-purple: #951b81;
+$bright-red: #e50051;
+
+// Shades
+$bright-turquoise-light: #5ccbb7;
+$brown: #a29790;
+$bright-blue-light: #4fa1f3;
+
+// Misc
+$form-border: #ddd;
+$form-bg: #eee;
+
+
+// Buttons
+//// Primary
+$button-default-bg: $bright-blue;
+$button-default-color: $white;
+$button-default-hover-bg: $dark-blue;
+$button-default-hover-color: $white;
+$button-default-outline: $black;
+$button-default-active-color: $black;
+$button-default-active-bg: $bright-orange;
+
+//// Secondary
+$button-secondary-bg: $white;
+$button-secondary-color: $bright-blue;
+$button-secondary-hover-bg: $bright-blue;
+$button-secondary-hover-color: $white;
+$button-secondary-outline: $black;
+$button-secondary-active-color: $black;
+$button-secondary-active-bg: $bright-orange;
+

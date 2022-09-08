@@ -1,0 +1,18 @@
+groups:
+  - name: 'primary_buttons'
+    title: 'Primary'
+    items:
+      - name: default
+        title: 'Default'
+      - name: icon
+        title: 'Iconed'
+        button_icon: true
+  - name: 'secondary_buttons'
+    title: 'Secondary'
+    modifiers: ['secondary']
+    items:
+      - name: default
+        title: 'Default'
+      - name: icon
+        title: 'Iconed'
+        button_icon: true

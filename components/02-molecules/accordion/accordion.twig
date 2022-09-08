@@ -1,0 +1,33 @@
+{#
+# Available variables:
+# - accordion_base_class - base classname of the wrapper.
+# - accordion_modifiers - array of modifiers to add to the base classname of the wrapper.
+# - accordion_blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+#
+# - accordion_title - the accordion heading.
+#
+# Available blocks:
+# - accordion_content - the content within the accordion item.
+#
+#}
+{{ attach_library('theme_name/accordion') }}
+{% set accordion_base_class = 'accordion' %}
+
+<div name="{{ field_name }}" {{ bem(accordion_base_class, accordion_modifiers|default([]), accordion_blockname, ['js-accordion']) }}>
+  <div {{ bem('heading', [], accordion_base_class) }}>
+    {% include "@atoms/button/button.twig" with {
+      button_content: accordion_title,
+      button_modifiers: ['underlined'],
+      button_blockname: accordion_base_class
+    }%}
+  </div>
+  {% include "@atoms/icon/icon.twig" with {
+    icon_name: 'chevron',
+    icon_decorative: true,
+  } %}
+  <div {{ bem('content', [], accordion_base_class) }}>
+    {% block accordion_content %}
+      {% include "@atoms/tables/tables.twig"%}
+    {% endblock %}
+  </div>
+</div>

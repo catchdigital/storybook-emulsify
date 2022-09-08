@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Theme override to display a pager.
+ *
+ * Available variables:
+ * - items: List of pager items.
+ *   The list is keyed by the following elements:
+ *   - first: Item for the first page; not present on the first page of results.
+ *   - previous: Item for the previous page; not present on the first page
+ *     of results.
+ *   - next: Item for the next page; not present on the last page of results.
+ *   - last: Item for the last page; not present on the last page of results.
+ *   - pages: List of pages, keyed by page number.
+ *   Sub-sub elements:
+ *   items.first, items.previous, items.next, items.last, and each item inside
+ *   items.pages contain the following elements:
+ *   - href: URL with appropriate query parameters for the item.
+ *   - attributes: A keyed list of HTML attributes for the item.
+ *   - text: The visible text used for the item link, such as "‹ Previous"
+ *     or "Next ›".
+ * - current: The page number of the current page.
+ * - ellipses: If there are more pages than the quantity allows, then an
+ *   ellipsis before or after the listed pages may be present.
+ *   - previous: Present if the currently visible list of pages does not start
+ *     at the first page.
+ *   - next: Present if the visible list of pages ends before the last page.
+ *
+ * @see template_preprocess_pager()
+ */
+#}
+{% set pager__base_class = 'pager' %}
+{% if pager__next_url or pager__prev_url %}
+  <nav name="{{ pager__name }}" {{ bem(pager__base_class) }} role="navigation">
+    <div {{ bem('items', [], pager__base_class, ['js-pager__items']) }}>
+      {% if items %}
+        <span {{ bem('item__title', [], pager__base_class, ['text--small']) }}>Page {{ pager__current_page }}</span>
+      {% endif %}
+      {% if pager__next_url %}
+        <div {{ bem('item', ['next'], pager__base_class) }}>
+          {% include "@atoms/icon/icon.twig" with {
+            icon_name: 'rightarrow',
+            icon_decorative: true,
+          } %}
+          <a id="{{ pager__next_id }}" href="{{ pager__next_url }}" rel="next">
+            <span {{ bem('item__text', [], pager__base_class) }}>{{ pager__next_label }}</span>
+            {% if not items %}
+              <span {{ bem('item__title', [], pager__base_class, ['text--small']) }}>{{ pager__next_title }}</span>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+      {% if pager__prev_url %}
+        <div {{ bem('item', ['prev'], pager__base_class) }}>
+          {% include "@atoms/icon/icon.twig" with {
+            icon_name: 'rightarrow',
+            icon_decorative: true,
+          } %}
+          <a id="{{ pager__prev_id }}" href="{{ pager__prev_url }}" rel="prev">
+            <span {{ bem('item__text', [], pager__base_class) }}>{{ pager__prev_label }}</span>
+            {% if not items %}
+              <span {{ bem('item__title', [], pager__base_class, ['text--small']) }}>{{ pager__prev_title }}</span>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </nav>
+{% endif %}

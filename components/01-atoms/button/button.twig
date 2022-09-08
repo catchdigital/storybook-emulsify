@@ -1,0 +1,38 @@
+{#
+/**
+ * Available variables:
+ * - button_content - the content of the button (typically text)
+ *
+ * Available blocks:
+ * - button_content - used to replace the content of the button with something other than text
+ *   for example: to insert an icon
+ */
+#}
+
+{% set button_base_class = button_base_class|default('button') %}
+{% set button_aria_label = button_aria_label|default('button') %}
+{% if button_icon %}
+  {% set button_modifiers = button_modifiers|default([])|merge(['icon']) %}
+{% endif %}
+
+{% set additional_attributes = {
+  class: bem(button_base_class, button_modifiers, button_blockname, button_extra_classes),
+  "aria-label": button_aria_label,
+} %}
+
+{% set tag = 'button' %}
+{% if button_url %}
+  {% set tag = 'a' %}
+{% endif %}
+
+<{{ tag }} href={{ button_url|default('#') }} {{ add_attributes(additional_attributes) }}>
+  {% block button_content %}
+    {{ button_content }}
+  {% endblock %}
+  {% if button_icon %}
+    {% include "@atoms/icon/icon.twig" with {
+      icon_name: 'chevron',
+      icon_decorative: true,
+    } %}
+  {% endif %}
+</{{ tag }}>

@@ -1,0 +1,44 @@
+name: Theme Name
+type: theme
+description: Storybook Starter Theme
+base theme: stable
+core_version_requirement: ^8.8 || ^9
+
+regions:
+  header: Header
+  hero: Hero
+  content: Content
+  sidebar: 'Sidebar'
+  footer: Footer
+
+logo: images/logo.png
+
+libraries:
+  - 'theme_name/global'
+
+ckeditor_stylesheets:
+  - dist/css/base.css
+
+libraries-override:
+  system/base: false
+  system/component: false
+
+component-libraries:
+  base:
+    paths:
+      - components/00-base
+  atoms:
+    paths:
+      - components/01-atoms
+  molecules:
+    paths:
+      - components/02-molecules
+  organisms:
+    paths:
+      - components/03-organisms
+  templates:
+    paths:
+      - components/04-templates
+  pages:
+    paths:
+      - components/05-pages

@@ -1,0 +1,45 @@
+@import "../../../imports";
+
+.form-item--managed_file__item,
+.form-managed-file {
+
+  &:focus {
+    // "Yank" the padding with negative margin to avoid a jump
+    // when element is focused
+    margin-right: -$padding-default;
+    margin-left: -$padding-default;
+    padding-right: $padding-default;
+    padding-left: $padding-default;
+    outline: 0.2rem solid clr(bright-blue);
+    // Use `box-shadow` to add border instead of changing `border-width`
+    // (which changes element size) and since `outline` is already used for the
+    // yellow focus state.
+    box-shadow: $box-shadow-default;
+  }
+
+  // Set "focus-within" to fix https://bugzilla.mozilla.org/show_bug.cgi?id=1430196
+  // so that component receives focus in Firefox.
+  // This can't be set together with `:focus` as all versions of IE fail
+  // to recognise `focus-within` and don't set any styles from the block
+  // when it's a selector.
+  &:focus-within {
+    margin-right: -$padding-default;
+    margin-left: -$padding-default;
+    padding-right: $padding-default;
+    padding-left: $padding-default;
+    outline: 0.2rem solid clr(bright-blue);
+    //box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+  }
+
+  .form-submit {
+    // @include button-color-secondary;
+    @include fntpair(body-3);
+
+    margin-left: $padding-default;
+  }
+}
+
+.form-item--managed_file__item {
+  margin-top: $padding-default;
+}
+

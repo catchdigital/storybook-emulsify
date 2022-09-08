@@ -1,0 +1,10 @@
+ol_modifiers: ['featured']
+ol_items:
+  - content: 'This is the first item in the ordered list.'
+    label: 'Safety first'
+  - content: 'And here is the item that goes with the label.'
+    label: 'Performance hours'
+  - content: "Here's the third item."
+    label: 'Performance hours should take steps to ensure...'
+  - content: "And here's the last item."
+    label: 'Co-operate'

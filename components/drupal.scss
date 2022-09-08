@@ -1,0 +1,142 @@
+/**
+ * @file
+ * Drupal related override styles.
+ *
+ * Remove the admin theme for smaller screens to avoid interferences.
+ *
+**/
+
+#toolbar-administration {
+  .container {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1070px) {
+  .edit-tabs {
+    display: none !important;
+  }
+  .toolbar-oriented .toolbar-tray-vertical.is-active {
+    display: none;
+  }
+
+  body.toolbar-tray-open.toolbar-vertical.toolbar-fixed {
+    margin: 0 !important;
+  }
+
+  #toolbar-administration {
+    display: none !important;
+  }
+}
+
+[id="toolbar-bar"] a {
+  color: #565656;
+  font-weight: 100;
+
+  &:hover {
+    color: #565656;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 1070px) {
+  .toolbar-horizontal {
+    .header {
+      top: 3.9rem;
+    }
+
+    &.toolbar-tray-open {
+      .header {
+        top: 7.9rem;
+      }
+    }
+  }
+}
+
+// Edit tabs
+.edit-tabs {
+  display: table;
+  width: 100%;
+  background: #23767461;
+  position: fixed;
+  bottom: 0;
+  z-index: 1050;
+
+  ul {
+    list-style: none;
+    margin: 2rem 0 2rem;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+
+      a {
+        background: #fff;
+        color: $grey;
+        text-decoration: none;
+        border-radius: 1.2rem;
+        padding: 0.4rem 1.2rem 0.5rem;
+        margin-right: 1rem;
+        border: 0.2rem solid $light-grey;
+
+        &:hover {
+          border-color: $grey;
+          background: $grey;
+          color: #fff;
+        }
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+.toolbar-horizontal .toolbar-tray .menu-item {
+  margin: 0;
+}
+
+.toolbar-horizontal .toolbar-tray .menu-item::before {
+  display: none;
+}
+
+.toolbar-oriented .toolbar-bar .toolbar-tab,
+.toolbar-oriented .toolbar-tray-horizontal li {
+  display: block;
+  margin: 0;
+
+  &::before {
+    display: none;
+  }
+}
+
+.toolbar-icon-9 .toolbar-icon-admin-toolbar-tools-help::before {
+  background-image: url('/themes/custom/coral-gables/logo.svg') !important;
+  background-position: center 7px;
+}
+
+// This should be removed and put in a better place if the user pages ever need proper styling.
+.user-page {
+  .edit-tabs {
+    display: block;
+    background: none;
+    position: relative;
+    margin-bottom: 5rem;
+  }
+
+  .edit-tabs ul li a {
+    border: 0;
+
+    &.is-active {
+      background-color: clr(brand-secondary);
+      color: clr(wht);
+      cursor: pointer;
+    }
+  }
+}

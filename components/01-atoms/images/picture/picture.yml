@@ -1,0 +1,7 @@
+output_image_tag: false
+image_src: 'https://source.unsplash.com/collection/190727/2040x568'
+image_alt: 'A really cool image.'
+sources:
+  - 'https://source.unsplash.com/collection/190727/2040x568'
+  - 'https://source.unsplash.com/collection/190727/800x568'
+  - 'https://source.unsplash.com/collection/190727/400x568'

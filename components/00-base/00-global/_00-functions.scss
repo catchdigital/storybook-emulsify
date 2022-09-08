@@ -1,0 +1,42 @@
+/////////////////////////////////////////////////
+/// Font size function / mixin
+/////////////////////////////////////////////////
+// USAGE
+// This function abstracts the pain of having to extract font-sizes manually, to save you remembering
+// the syntax for map-get().
+//
+// There are two functions here:
+// fnt(size-name, viewport)
+// Using this will give you one specific font size value. Viewport defaults to 'mobile', but chuck 'desktop' in as a
+// second argument if you want that one.
+// EXAMPLE:
+// font-size: fnt(body-2, desktop);
+// // returns font-size: 1.9rem;
+//
+// font-size: fnt(body-2);
+// // returns font-size: 1.7rem;
+//
+@function fnt($size-name, $viewport: mobile) {
+  $fontmap: $mobile-fonts;
+
+  @if ($viewport == 'desktop') {
+    $fontmap: $desktop-fonts;
+  }
+
+  @return map-get($fontmap, $size-name);
+}
+
+// @include fntpair(size-name)
+// This will return a font-size declaration for the mobile font, with a media query declaration separately for the
+// corresponding desktop equivalent.
+// EXAMPLE
+//
+// .my-selector {
+//   @include fntpair(body-2);
+// }
+@mixin fntpair($size-name) {
+  font-size: fnt($size-name);
+  @include medium {
+    font-size: fnt($size-name, desktop);
+  }
+}

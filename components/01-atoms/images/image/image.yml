@@ -1,0 +1,5 @@
+output_image_tag: true
+image_srcset: 'https://placeimg.com/320/180/nature 320w, https://placeimg.com/480/270/nature 480w, https://placeimg.com/640/360/nature 640w, https://placeimg.com/800/450/nature 800w, https://placeimg.com/960/540/nature 960w, https://placeimg.com/1120/630/nature 1120w, https://placeimg.com/1280/720/nature 1280w, https://placeimg.com/1440/810/nature 1440w, https://placeimg.com/1600/900/nature 1600w, https://placeimg.com/1760/990/nature 1760w, https://placeimg.com/1920/1080/nature 1920w, https://placeimg.com/2080/1170/nature 2080w, https://placeimg.com/2240/1260/nature 2240w'
+image_sizes: '100vw'
+image_src: 'https://placeimg.com/320/180/nature'
+image_alt: 'A dummy description for an image'

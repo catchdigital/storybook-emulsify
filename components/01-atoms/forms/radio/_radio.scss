@@ -1,0 +1,40 @@
+.form-item--radios,
+.form-item--radio__item {
+  @include list-reset;
+}
+
+.form-item--radio__item {
+  margin-bottom: $padding-default;
+}
+.form-item--radio__item input,
+.form-item--radio__item label::after,
+.form-item--radio__item label::before {
+  border-radius: 50%;
+}
+
+.form-item--radio__item:last-child {
+  margin-bottom: 0;
+}
+
+.form-item--radio__item label::after {
+  background-color: clr(text-inverse);
+  border: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  top: 1rem;
+  left: 0.6rem;
+}
+
+.form-item--radio__item input:checked ~ label::before {
+  border-color: clr(bright-blue);
+}
+
+.form-item--radios--inline {
+  display: flex;
+  flex-wrap: wrap;
+
+
+  .form-item--radio__item {
+    margin-right: $space-double;
+  }
+}

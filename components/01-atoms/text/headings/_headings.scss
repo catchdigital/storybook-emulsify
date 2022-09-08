@@ -1,0 +1,130 @@
+/*
+ * Generic header styles:
+ * All arguments are optional. If not defined, the defaults below will be used
+*/
+
+
+h1,
+.h1,
+.heading--title {
+  @include heading(
+    $font-size: 'heading--title',
+    $margin: 0 0 2.4rem
+    // $letter-spacing: -0.05rem,
+  );
+}
+
+h2,
+.h2,
+.heading--main {
+  @include heading(
+    $font-size: 'heading--main',
+    $margin: 0 0 2.4rem
+    // $letter-spacing: -0.05rem,
+  );
+}
+
+h3,
+.h3,
+.heading--sub {
+  @include heading(
+    $font-size: 'heading--sub',
+    $font-weight: 700,
+    $line-height: 1.3
+  );
+}
+
+h4,
+.h4,
+.heading--small,
+.heading--alt {
+  @include heading(
+    $font-size: 'heading--small',
+    $line-height: 1.25
+  );
+}
+
+.heading--xsmall {
+  @include heading(
+    $font-size: 'heading--xsmall',
+  );
+}
+
+h5,
+h6,
+.heading--tiny {
+  @include heading(
+    $font-size: 'heading--tiny',
+  );
+}
+
+.heading--single-line {
+  clear: both;
+  float: left;
+}
+
+.heading--brand {
+  background-color: clr(brand);
+  color: $white;
+}
+
+.heading--brand-dark {
+  background-color: clr(brand-dark);
+  color: $white;
+}
+
+.heading__icon {
+  font-size: inherit;
+  height: 1.5rem;
+  margin-left: auto;
+  width: 1.5rem;
+}
+
+.heading--lined {
+  border-bottom: 0.1rem solid rgba(clr(brand), 0.25);
+  padding-bottom: $padding-default;
+  @include large {
+    margin-bottom: $padding-large;
+  }
+}
+
+.heading--border-bottom {
+  border-bottom: 0.1rem solid clr(grey);
+  padding-bottom: $space-double;
+}
+
+.heading--middle-lined-wrapper {
+  position: relative;
+  margin-top: $space-triple;
+
+  .heading__line {
+    display: none;
+  }
+
+  @include medium {
+    .heading {
+      display: inline-block;
+      background-color: clr(background);
+      padding-right: $space-double;
+    }
+    .heading__line {
+      background-color: rgba(clr(brand), 0.25);
+      height: 0.1rem;
+      width: 100%;
+      position: absolute;
+      top: 1.5rem;
+      z-index: -1;
+      display: block;
+    }
+  }
+}
+
+.heading--extra-margin {
+  margin: $space-triple 0 $space-double;
+}
+
+// Adding extra spacing for h2 and h3 inside wysiwygs.
+.text-long h2,
+.text-long h3 {
+  margin: $padding-large 0 $padding-default;
+}

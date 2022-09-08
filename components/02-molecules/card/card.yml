@@ -1,0 +1,9 @@
+card_future: true
+card_date: 'Wed 08 Sep 2021'
+card_time: '14:00 - 16:00'
+card_title: 'Card title'
+card_sub_title: 'Card sub title'
+card_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+card_link_content: 'Click for more'
+card_link_url: '#'
+card_image_src: 'https://source.unsplash.com/720x560?nature'

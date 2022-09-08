@@ -1,0 +1,121 @@
+
+// Paths
+$images: '../images';
+
+// Fonts
+$font-body: 'Source Sans Pro', sans-serif;
+$font-heading: 'Montserrat', sans-serif;
+$font-bold: 700;
+$font-semibold: 600;
+
+// Font sizes
+// -- Mobile
+$mobile-fonts: (
+  heading--title: 4rem,
+  heading--main: 3.2rem,
+  heading--sub: 2.6rem,
+  heading--small: 2.4rem,
+  heading--xsmall: 2rem,
+  heading--tiny: 1.8rem,
+  body-copy: 1.8rem,
+  body-small: 1.6rem,
+  body-xs: 1.5rem
+);
+
+// -- Desktop
+$desktop-fonts: (
+  heading--title: 4.8rem,
+  heading--main: 3.6rem,
+  heading--sub: 3rem,
+  heading--small: 2.4rem,
+  heading--xsmall: 2rem,
+  heading--tiny: 1.8rem,
+  body-copy: 1.8rem,
+  body-small: 1.6rem,
+  body-xs: 1.6rem
+);
+
+// Spacing
+$space: 1rem;
+$padding-default: 1.6rem;
+$padding-large: 3.2rem;
+$padding-small: 0.8rem;
+
+// Times
+$space-double: $space * 2;
+$space-triple: $space * 3;
+$space-quadruple: $space * 4;
+$space-quintuple: $space * 5;
+$space-sextuple: $space * 6;
+$space-septuple: $space * 7;
+
+// Divided
+$space-one-half: $space/2;
+$space-one-third: $space/3;
+$space-one-fourth: $space/4;
+$space-one-fifth: $space/5;
+$space-one-sixth: $space/6;
+$space-one-seventh: $space/7;
+$space-one-eighth: $space/8;
+
+// Borders, box shadows, etc
+$border-radius: 0.2rem;
+$box-shadow-default: 0 0.4rem 0.8rem 0 rgba(0,0,0,0.15);
+$button-shadow-down: 0 0.2rem 0.5rem rgba(18, 41, 64, 0.2);
+
+// Breakpoints
+$phone: 0;
+$phone-wide: 480px;
+$phablet: 540px;
+$tablet-small: 640px;
+$tablet: 768px;
+$tablet-wide: 1024px;
+$desktop:  1200px;
+$desktop-wide: 1400px;
+
+
+// Grid Variables
+$grid-columns: 12;
+$page-content: 980px;
+
+$grid-breakpoints: (
+  xs: $phone,
+  sm: $phone-wide,
+  sm-md: $phablet,
+  sm-lg: $tablet-small,
+  md: $tablet,
+  lg: $tablet-wide,
+  xl: $desktop,
+  xxl: $desktop-wide,
+);
+
+
+// Define the gutters between columns, for different screen sizes.
+$grid-gutter-widths: (
+  xs: 2rem,
+  sm: 2rem,
+  sm-md: 2rem,
+  sm-lg: 2rem,
+  md: 2rem,
+  lg: 2rem,
+  xl: 2rem,
+  xxl: 2rem,
+);
+
+// Grid containers
+// This is predefined: only need to uncomment if you want to change the default
+//
+// Define the maximum width of `.container` for different screen sizes.
+// By default this is the breakpoint width minus the gutter
+
+// $container-max-widths: (
+//  xs: calc(#{$phone} - #{map-get($grid-gutter-widths, 'xs')}),
+//  sm: calc(#{$phone-wide} - #{map-get($grid-gutter-widths, 'sm')}),
+//  sm-md: calc(#{$phablet} - #{map-get($grid-gutter-widths, 'sm-md')}),
+//  sm-lg: calc(#{$tablet-small} - #{map-get($grid-gutter-widths, 'sm-lg')}),
+//  md: calc(#{$tablet} - #{map-get($grid-gutter-widths, 'md')}),
+//  lg: calc(#{$tablet-wide} - #{map-get($grid-gutter-widths, 'lg')}),
+//  xl: calc(#{$desktop} - #{map-get($grid-gutter-widths, 'xl')}),
+//  xxl: calc(#{$desktop-wide} - #{map-get($grid-gutter-widths, 'xxl')}),
+// );
+

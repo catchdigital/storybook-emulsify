@@ -1,0 +1,84 @@
+// CSS-only select styling (from https://github.com/filamentgroup/select-css)
+
+.form-item__dropdown {
+  background-color: clr(form-bg);
+  border: 0.1rem solid clr(form-border);
+  border-radius: $border-radius;
+  display: block;
+  position: relative;
+
+  //@media (prefers-color-scheme: dark) {
+  //  background-color: clr(background-inverse);
+  //}
+
+  &::after {
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 0.5rem solid clr(black-blue);
+    content: ' ';
+    position: absolute;
+    top: 42%;
+    right: 1rem;
+    z-index: 2;
+
+    /* These hacks make the select behind the arrow clickable in some browsers */
+    pointer-events: none;
+    display: none;
+  }
+
+  &:hover {
+    border-color: clr(black-blue);
+  }
+
+  .form-item--error & {
+    border-color: clr(bright-red);
+  }
+}
+
+.form-item__select {
+  @include fntpair(body-2);
+
+  border: 0.1rem solid clr(form-bg);
+  border-radius: $border-radius;
+  height: 4.2rem; // set height required for discrepancy between .form-item__dropdown border and the select :focus border
+  margin: 0;
+  outline: none;
+  padding: 0.6rem 0.8rem 0.5rem;
+  width: 100%;
+
+  :focus {
+    outline: none;
+    color: clr(bright-blue);
+  }
+
+  .form-item--error & {
+    border-color: clr(bright-red);
+    outline: none;
+  }
+}
+
+@supports (-webkit-appearance: none) or (appearance: none) or
+  ((-moz-appearance: none) and (mask-type: alpha)) {
+  /* Show custom arrow */
+  .form-item__dropdown::after {
+    display: block;
+  }
+
+  /* Remove select styling */
+  .form-item__select {
+    padding-right: 2rem; /* Match-01 */
+
+    /* inside @supports so that iOS <= 8 display the native arrow */
+    background: none; /* Match-04 */
+
+    /* inside @supports so that Android <= 4.3 display the native arrow */
+    border: 0.1rem solid transparent; /* Match-05 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      box-shadow: 0 0 0 0.4rem clr(bright-blue);
+    }
+  }
+}

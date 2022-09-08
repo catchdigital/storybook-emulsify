@@ -1,0 +1,131 @@
+/**
+ * Breakpoint Configuration
+ * @see https://github.com/Team-Sass/breakpoint/wiki
+ *
+ */
+
+/////////////////////
+// Global Breakpoints
+
+// Avoid using in favor of atomic, content-specific, breakpoints.
+// These should be used for generic code, like layouts and typography, only.
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: (
+  xs: 0,
+  sm: 320px,
+  sm-md: 375px,
+  sm-lg: 414px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1176px,
+  xxl: 1300px,
+) !default;
+
+// Gutters
+// By default Bootstrap will use one gutter size. Modify this value to allow custom gutters dependent on breakpoint.
+$grid-gutter-widths: (
+  xs: 2rem,
+  sm: 2rem,
+  sm-md: 2rem,
+  sm-lg: 2rem,
+  md: 2rem,
+  lg: 2rem,
+  xl: 2rem,
+  xxl: 2rem,
+) !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+//
+// Stylelint is disabled here becase the `map-get` function trips up the `calc` syntax check.
+/* stylelint-disable */
+$container-max-widths: (
+  xs: calc(#{$phone} - #{map-get($grid-gutter-widths, 'xs')}),
+  sm: calc(#{$phone-wide} - #{map-get($grid-gutter-widths, 'sm')}),
+  sm-md: calc(#{$phablet} - #{map-get($grid-gutter-widths, 'sm-md')}),
+  sm-lg: calc(#{$tablet-small} - #{map-get($grid-gutter-widths, 'sm-lg')}),
+  md: calc(#{$tablet} - #{map-get($grid-gutter-widths, 'md')}),
+  lg: calc(#{$tablet-wide} - #{map-get($grid-gutter-widths, 'lg')}),
+  xl: calc(#{$desktop} - #{map-get($grid-gutter-widths, 'xl')}),
+  xxl: calc(#{$desktop-wide} - #{map-get($grid-gutter-widths, 'xxl')}),
+  ) !default;
+  /* stylelint-enable */
+
+
+
+// The max-width breakpoint is used when the design should be applied at whatever the
+// largest breakpoint is regardless of actual pixel value. e.g. removing outer margin on body wrapper
+$max-width: $grid-breakpoints[xl];
+
+
+/// Mixin - xs Breakpoint
+/// Allows easier @include xs {} syntax
+@mixin xs {
+  @include media-breakpoint-up(xs) {
+    @content;
+  }
+}
+
+/// Mixin - small Breakpoint
+/// Allows easier @include small {} syntax
+@mixin small {
+  @include media-breakpoint-up(sm) {
+    @content;
+  }
+}
+
+/// Mixin - sm-medium Breakpoint
+/// Allows easier @include sm-med {} syntax
+@mixin small-med {
+  @include media-breakpoint-up(sm-md) {
+    @content;
+  }
+}
+
+/// Mixin - sm-large Breakpoint
+/// Allows easier @include sm-large {} syntax
+@mixin small-large {
+  @include media-breakpoint-up(sm-lg) {
+    @content;
+  }
+}
+
+/// Mixin - medium Breakpoint
+/// Allows easier @include medium {} syntax
+@mixin medium {
+  @include media-breakpoint-up(md) {
+    @content;
+  }
+}
+
+/// Mixin - large Breakpoint
+/// Allows easier @include large {} syntax
+@mixin large {
+  @include media-breakpoint-up(lg) {
+    @content;
+  }
+}
+
+/// Mixin - xl Breakpoint
+/// Allows easier @include xl {} syntax
+@mixin xl {
+  @include media-breakpoint-up(xl) {
+    @content;
+  }
+}
+
+// ***
+// *** media-breakpoint-down ***
+// ***
+/// Mixin - medium Breakpoint
+/// Allows easier @include medium {} syntax
+@mixin medium-down {
+  @include media-breakpoint-down(md) {
+    @content;
+  }
+}

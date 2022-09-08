@@ -1,0 +1,12 @@
+PROJECTROOT="{PROJECTROOT}"
+
+cd $PROJECTROOT
+if [ -x "$(command -v yarn)" ]; then
+  #echo "Building..."
+  #yarn build
+
+  #echo "Building Storybook"
+  #yarn build-storybook
+  echo "Linting..."
+  yarn lint
+fi

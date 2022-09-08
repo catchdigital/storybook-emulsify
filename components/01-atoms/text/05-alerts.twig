@@ -1,0 +1,6 @@
+{% for item in alerts %}
+  {% include "@atoms/text/alert.twig" with {
+    alert__content: item.alert__content,
+    alert__modifiers: item.alert__modifiers
+  } %}
+{% endfor %}

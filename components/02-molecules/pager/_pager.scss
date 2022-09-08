@@ -1,0 +1,58 @@
+@import "../../imports";
+
+.pager {
+  margin-top: $space-triple;
+  width: 100%;
+}
+
+.pager__items {
+  padding-left: 0;
+  width: 100%;
+
+  .pager__item__title {
+    padding-bottom: $padding-default;
+    display: block;
+  }
+}
+
+.pager__item {
+  border: 0.1rem solid clr(grey);
+  border-width: 0.1rem 0;
+  display: flex;
+  padding: 2.5rem 0;
+
+  + .pager__item {
+    border-top: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .pager__item__text {
+    @include fntpair(body-2);
+
+    display: block;
+    text-decoration: underline;
+  }
+
+  .pager__item__title {
+    @include fntpair(body-3);
+
+    color: clr(text);
+    display: block;
+    text-decoration: none;
+  }
+
+  .icon {
+    color: clr(cerise);
+    margin-right: $space-one-half;
+    margin-top: $space;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+.pager__item--prev .icon {
+  transform: rotate(180deg);
+}

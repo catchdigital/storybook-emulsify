@@ -1,0 +1,48 @@
+@import "accessible-autocomplete";
+
+.gov-major-worksmajor-works-autocomplete-search {
+  .form-item__dropdown {
+    border: none;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .autocomplete__input {
+    border-radius: $border-radius;
+    box-shadow: none;
+    background-color: clr(text-inverse);
+    border: 0.2rem solid clr(form-border);
+
+    &.autocomplete__input--focused {
+      border: 0.2rem solid clr(text-inverse);
+      border-radius: $border-radius;
+    }
+
+    &[aria-expanded="true"] {
+      border: none;
+      box-shadow: none;
+      border-radius: $border-radius;
+    }
+  }
+
+  .form-submit {
+    display: none;
+  }
+}
+
+.autocomplete__wrapper .autocomplete__menu {
+  border: 0.1rem solid clr(form-border);
+  border-radius: $border-radius;
+
+  &.autocomplete__menu--visible {
+    border: none;
+    width: 100%;
+
+    li {
+      border: 0.1rem solid var(--c-form-border);
+    }
+  }
+}
+

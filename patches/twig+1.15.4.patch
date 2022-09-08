@@ -1,0 +1,13 @@
+diff --git a/node_modules/twig/src/twig.logic.js b/node_modules/twig/src/twig.logic.js
+index 0031ac5..04ba482 100644
+--- a/node_modules/twig/src/twig.logic.js
++++ b/node_modules/twig/src/twig.logic.js
+@@ -1238,7 +1238,7 @@ module.exports = function (Twig) {
+                     .then(fileName => {
+                         const embedOverrideTemplate = new Twig.Template({
+                             data: token.output,
+-                            id: state.template.id,
++                            id: `${state.template.id}-override`,
+                             base: state.template.base,
+                             path: state.template.path,
+                             url: state.template.url,

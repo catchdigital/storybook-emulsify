@@ -1,0 +1,88 @@
+@import "./00-colors-vars";
+// Color Usage variables - use these (via the `clr` function below)
+// rather than color variables directly.
+$defaultColors: (
+  text: $black-blue,
+  text-inverse: $white,
+  background: $off-white,
+  primary: $brand-primary,
+  primary-dark: $brand-primary-dark,
+
+  bright-orange: $bright-orange,
+  bright-yellow: $bright-yellow,
+  bright-green-light: $bright-green-light,
+  bright-green: $bright-green,
+  bright-turquoise: $bright-turquoise,
+  bright-blue: $bright-blue,
+  bright-purple: $bright-purple,
+  bright-red: $bright-red,
+
+  link-color: $bright-blue,
+  link-hover-color: $dark-blue,
+  link-visited-color: $bright-purple,
+  link-active-outline: $bright-blue,
+
+  blackest: $black,
+  off-black: $off-black,
+  dark-grey: $dark-grey,
+  mid-grey: $grey,
+  light-grey: $light-grey,
+  lighter-grey: $lighter-grey,
+  off-white: $off-white,
+  lightest: $white,
+  bg-color: $bg-color,
+);
+
+$buttonColors: (
+  button-default-bg: $button-default-bg,
+  button-default-color: $button-default-color,
+  button-default-hover-bg: $button-default-hover-bg,
+  button-default-hover-color: $button-default-hover-color,
+  button-default-outline: $button-default-outline,
+  button-default-active-color: $button-default-active-color,
+  button-default-active-bg: $button-default-active-bg,
+
+  button-secondary-bg: $button-secondary-bg,
+  button-secondary-color: $button-secondary-color,
+  button-secondary-hover-bg: $button-secondary-hover-bg,
+  button-secondary-hover-color: $button-secondary-hover-color,
+  button-secondary-outline: $button-secondary-outline,
+  button-secondary-active-color: $button-secondary-active-color,
+  button-secondary-active-bg: $button-secondary-active-bg,
+);
+
+///////////
+// Usage //
+///////////
+// This color function makes it easy for you to call a color by it's functional
+// name anywhere you need.
+// E.g. to use the `text` color, you type: `color: clr(text);`
+//
+// How it works:
+// This function works in conjunction with the dynamic css custom properties
+// declarations below. The item called in the function is prefixed with
+// `var(--c-` to call the custom property for that color.
+// E.g. `color: clr(text);` will return `color: var(--c-text);`
+// Note: (The `--c-` is added via the `@each` loops below)
+@function clr($colorChoice) {
+  @return var(--c-#{$colorChoice});
+}
+
+@function btnclr($colorChoice) {
+  @return var(--b-#{$colorChoice});
+}
+
+// Create CSS custom properties
+// This is what powers the built-in OS light/dark mode switching.
+// For each color variable above (e.g. `text` and `background`) a css custom
+// property will be created. (e.g. `--c-text:` and `--c-background:`).
+//
+// The first `@each` below will create a custom property for each item in the
+// `$defaultColors` map. So put all of your default colors there.
+//
+// The `prefers-color-scheme: dark` media query below will then create custom
+// properties for each of the colors in the `$darkColors` map only if the
+// browser supports that feature. If there is an exact match (e.g. `text`) in
+// both maps, the one from `$darkColors` will be used on machines that have
+// opted to use the 'dark mode' on their OS.
+

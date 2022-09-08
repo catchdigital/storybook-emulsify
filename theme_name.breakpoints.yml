@@ -1,0 +1,22 @@
+# Breakpoints - based on test_theme/components/00-base/base/_02.breakpoints.scss
+theme_name.xs:
+  label: phone
+  mediaQuery: 'all and (max-width: 480px)'
+theme_name.sm:
+  label: phablet
+  mediaQuery: 'all and (min-width: 540px)'
+theme_name.sm_md:
+  label: tablet-small
+  mediaQuery: 'all and (min-width: 640ox)'
+theme_name.sm_lg:
+  label: tablet
+  mediaQuery: 'all and (min-width: 768px)'
+theme_name.md:
+  label: tablet-wide
+  mediaQuery: 'all and (min-width: 1024px)'
+theme_name.xl:
+  label: desktop
+  mediaQuery: 'all and (min-width: 1200px)'
+theme_name.xxl:
+  label: desktop-wide
+  mediaQuery: 'all and (min-width: 1400px)'

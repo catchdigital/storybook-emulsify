@@ -1,0 +1,135 @@
+/*!
+ * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/* stylelint-disable */
+//html {
+//  box-sizing: border-box;
+//  -ms-overflow-style: scrollbar;
+//}
+//
+//*,
+//*::before,
+//*::after {
+//  box-sizing: inherit;
+//}
+@import "variables";
+@import "../01-variables";
+
+@import "mixins/grid";
+@import "mixins/grid-framework";
+
+@import "breakpoints";
+//@import "utilities/display";
+//@import "utilities/flex";
+//@import "utilities/spacing";
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+$enable-grid-classes: true;
+
+@if $enable-grid-classes {
+  .container {
+    @include make-container($grid-gutter-widths);
+    @include make-container-max-widths();
+
+    // Reset padding if there are nested containers.
+    &--empty,
+    .container,
+    .container--fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but with 100% width for
+// fluid, full width layouts.
+
+@if $enable-grid-classes {
+  .container-fluid {
+    @include make-container($grid-gutter-widths);
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns (to prevent runaway style inheritance).
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
+
+.visible-large {
+  display: none!important;
+  @include media-breakpoint-up(lg) {
+    display: block!important;
+  }
+}
+
+.hidden-large {
+  display: block!important;
+  @include media-breakpoint-up(lg) {
+    display: none!important;
+  }
+}
+/* stylelint-enable */
+
+[class*="col-"] {
+  display: flex;
+  flex-direction: column;
+  > * {
+    flex: 1 0 auto;
+  }
+}
+
+// Grid CSS Layout grid
+
+@supports (display: grid) {
+  // Currently only need 6col --> 3col
+  .row--grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+
+    > [class*="col-"] {
+      max-width: none;
+      width: auto;
+    }
+    @include medium {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

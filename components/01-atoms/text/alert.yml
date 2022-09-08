@@ -1,0 +1,19 @@
+alerts:
+  - alert__content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+    alert__modifiers: 'info'
+
+  - alert__content: 'Report any outstanding issues<br /><br /><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>'
+    alert__modifiers:
+      - 'danger'
+
+  - alert__content: 'Here is a warning<br /><br /><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>'
+    alert__modifiers:
+      - 'warning'
+
+  - alert__content: 'Here is a notice<br /><br /><p class="paragraph">Password updated successfully</p>'
+    alert__modifiers:
+      - 'notice'
+
+  - alert__content: 'Here is a Policy message<br /><br /><p class="paragraph">Password updated successfully</p>'
+    alert__modifiers:
+      - 'policy'

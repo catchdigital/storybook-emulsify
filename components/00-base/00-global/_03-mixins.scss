@@ -1,0 +1,135 @@
+/*
+* General Mixins (put specific ones in component files where applicable)
+*/
+
+// Mixin - Clearfix.
+// With a Flex Box / Grid layou this should be unecessary, only really
+// use with float-based layout.
+// Adds clearfix based on http://bourbon.io/docs/#clearfix
+// use example =   @include clearfix
+//
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+// - Mixin - Link.
+// Defines the default styling for link:
+// include hover, focus etc state
+//
+@mixin link {
+  color: clr(link-color);
+  transition: color .2s ease-out;
+
+  &:hover,
+  &:active {
+    color: clr(link-hover-color);
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: clr(link-visited-color)
+  }
+
+  &:focus {
+    outline: 0.3rem solid clr(link-active-outline);
+  }
+
+  &:active {
+    background-color: transparent;
+    box-shadow: 0 0 0 0.4rem clr(link-active-outline);
+    color: clr(link-active-colour);
+  }
+}
+
+// Mixin - Body Copy.
+// Defines the default font size and font-family.
+// Should be inherited by `<body>` but can be used to override a nested element
+//
+@mixin body-copy {
+  @include fntpair('body-copy');
+
+  font-family: $font-body;
+  line-height: 1.15;
+}
+
+// Mixin - Heading
+@mixin heading(
+  $font-family: $font-heading,
+  $font-size: 'heading--title',
+  $line-height: 1.1,
+  $color: clr(black-blue),
+  $font-weight: 700,
+  $letter-spacing: false,
+  $margin: 0 0 $padding-default,
+  $text-transform: normal
+) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  line-height: #{$line-height};
+  margin: #{$margin};
+  width: auto;
+  @if ($letter-spacing) {
+    letter-spacing: $letter-spacing;
+  }
+
+  @include fntpair($font-size);
+
+  &__link {
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+    }
+  }
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li::before {
+    display: none;
+  }
+}
+
+// Only display content to screen readers
+//
+// See: https://a11yproject.com/posts/how-to-hide-content/
+// See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+
+@mixin sr-only() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+//
+// Useful for "Skip to main content" links; see https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+//
+// Credit: HTML5 Boilerplate
+
+@mixin sr-only-focusable() {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}

@@ -1,0 +1,38 @@
+global:
+  js:
+    lib/00-util.js: { }
+  css:
+    theme:
+      dist/base.css: {}
+
+# IE 11 support for SVG use - disable if not needed.
+# See also components/01-atoms/icon/icon.twig to remove attach_library.
+sprite:
+  js:
+    components/01-atoms/icon/svgxuse.min.js: { attributes: { defer: true } }
+
+tabs:
+  js:
+    dist/js/02-molecules/tabs/tabs.js: {}
+  dependencies:
+    - core/drupal
+
+slick:
+  remote: https://github.com/kenwheeler/slick
+  version: 1.8.0
+  license:
+    name: MIT
+    url: https://github.com/kenwheeler/slick/blob/master/LICENSE
+    gpl-compatible: true
+  css:
+    theme:
+      /libraries/slick/slick/slick.css: {}
+  js:
+    /libraries/slick/slick/slick.min.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+youtube_iframe_api:
+  js:
+    //www.youtube.com/iframe_api: {type: external, attributes: { defer: true, async: true } }

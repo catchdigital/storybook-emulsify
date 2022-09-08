@@ -1,0 +1,19 @@
+{#
+/**
+ * Available variables:
+ * 
+ */
+#}
+{{ attach_library('wcc/select-autocomplete') }}
+
+{% block select %}
+<form class="gov-major-worksmajor-works-autocomplete-search">
+  <label for="edit-major-works-neighbourhood">{{ select_label }}</label>
+  <select id="edit-major-works-neighbourhood">
+    <option value="">Search for block</option>
+    <option value="fr">Major block one</option>
+    <option value="de">Block two</option>
+    <option value="gb">Third major block</option>
+  </select>
+</form>
+{% endblock %}

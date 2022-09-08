@@ -1,0 +1,122 @@
+
+$table-bg: clr(bg-color);
+$table-heading-bg: #d5e4f1;
+$table-border: $bright-blue-light;
+
+table,
+.table {
+  @include fntpair(body-2);
+
+  border: 0.1rem solid $table-border;
+  border-width: 0.1rem 0 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  color: clr(dark-grey);
+  margin: $padding-default 0;
+  width: 100%;
+}
+
+th,
+td,
+.table__heading-cell,
+.table__cell {
+  border: none;
+  border: 0.1rem solid $table-border;
+  padding: $padding-default*1.5;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+th,
+.table__mobile-header,
+.table__heading-cell {
+  background-color: $table-heading-bg;
+  font-weight: $font-semibold;
+  text-align: left;
+}
+
+.table__mobile-header {
+  display: none;
+  padding: 0;
+}
+
+tfoot,
+thead {
+  th,
+  td {
+    background-color: var(--c-background);
+  }
+}
+
+tr,
+.table__row {
+  background-color: $table-bg;
+  &:nth-child(odd) {
+    background-color: #eee;
+  }
+}
+
+.responsive--processed {
+  caption {
+    text-align: left;
+    font-weight: $font-semibold;
+  }
+}
+
+
+// Mobile-only overrides the default table semantics.
+@media (max-width: map-get($grid-breakpoints, 'md') - 1) {
+  .responsive--processed {
+    display: block;
+    border-top: 0;
+    border-width: 0.1rem;
+
+    thead {
+      display: none;
+    }
+
+    td,
+    tr,
+    th,
+    caption,
+    tbody,
+    tfoot {
+      display: block;
+      padding: 0;
+    }
+
+    caption {
+      padding: $padding-default;
+    }
+
+    td {
+      border: 0;
+      display: flex;
+      padding: $padding-default $space-one-half;
+    }
+
+    tr,
+    .table__row {
+      border-top: 0.1rem solid $table-border;
+
+      &:nth-child(odd) {
+        background-color: inherit;
+      }
+    }
+
+    tr td:nth-child(even) {
+      background-color: #eee;
+    }
+
+    .table__mobile-header {
+      background-color: transparent;
+      display: block;
+      margin-right: $space;
+      padding: 0 $space;
+      min-width: 35%;
+      width: 35%;
+    }
+  }
+}

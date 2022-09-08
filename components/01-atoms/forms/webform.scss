@@ -1,0 +1,124 @@
+@import "../../imports";
+
+.webform-submission-form {
+  margin: $padding-large auto;
+  .form-item--select__item {
+    max-width: 56.8rem;
+    width: 100%;
+  }
+
+  .form-item__label {
+    @include fntpair(body-3);
+  }
+
+  .form-actions .button {
+    // @include button-medium;
+
+    margin-right: $space;
+    margin-bottom: $padding-default;
+
+    @include media-breakpoint-down('sm-md') {
+      width: 100%;
+    }
+  }
+}
+
+.form-item--processed_text__item {
+  h2 {
+    @include fntpair(heading--small);
+
+    margin-top: $padding-large;
+  }
+}
+
+.webform--data-protection {
+  margin-bottom: $padding-default;
+}
+
+.webform-button--previous,
+.webform-button--next {
+  &::after {
+    // @include rightarrow();
+
+    // background-image: url(#{$images}/icons/rightarrow-white.svg);
+  }
+
+  &:focus::after {
+    // background-image: url(#{$images}/icons/rightarrow.svg);
+  }
+}
+
+.webform-button--next {
+  padding-right: $padding-large;
+}
+
+
+.webform-button--previous {
+  padding-left: $padding-large;
+  &::after {
+    transform: rotate(-180deg) translateY(49%);
+    left: $space;
+  }
+}
+
+.webform-wizard-pages-link {
+  background: transparent;
+  color: var(--c-link-colour);
+  display: block;
+  margin-top: -2rem;
+  box-shadow: none;
+  padding: 0;
+  text-decoration: underline;
+  font-weight: normal;
+
+  @include link;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+
+.webform-preview {
+  max-width: 56.8rem;
+  details {
+    margin-bottom: $space-quintuple;
+    summary {
+      @include heading(
+        $font-size: 'heading--sub',
+        $font-weight: 700,
+        $line-height: 1.3
+      );
+    }
+  }
+
+  .webform-element {
+    border-bottom: 0.1rem solid rgba($brand-primary, 0.25);
+    margin-bottom: $space-triple;
+    max-width: 56.8rem;
+    padding-bottom: $padding-default;
+    .mailto .mailto {
+      display: none;
+    }
+  }
+  .form-item__label {
+    font-weight: 600;
+    margin-right: $space;
+  }
+
+  .form--optional {
+    display: none;
+  }
+}
+
+@include large {
+  .webform-preview {
+    .webform-element {
+      display: flex;
+    }
+    .form-item__label {
+      display: inline-block;
+      width: 17rem;
+    }
+  }
+}

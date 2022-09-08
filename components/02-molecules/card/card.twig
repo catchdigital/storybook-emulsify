@@ -1,0 +1,96 @@
+{#
+# Available variables:
+# - card_base_class - base classname of the wrapper.
+# - card_modifiers - array of modifiers to add to the base classname of the wrapper.
+# - card_blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+# - card_extra_classes - extra classes, optional for the component.
+#
+# - card_image_src - the actual image file location.
+# - card_image_alt - (optional) the alt text for screen readers and when the image cannot load.
+# - card_image_output_image_tag - whether to print the picture element or not.
+#
+# - card_content_base_class - base classname of the copy wrapper - defaults to 'heading'.
+# - card_content_modifiers - array of modifiers to add to the base classname of the copy wrapper.
+# - card_content_blockname - blockname prepended to the base classname of the copy wrapper.
+#
+# - card_heading - the content of the title component.
+# - card_heading_link - (default: 2) what level of heading to show on the card
+# - card_heading_link - (optional) the url the title should link to. Defaults to card_link_url.
+# - card_heading_base_class - base classname of the title component. Defaults to "title".
+# - card_heading_blockname - blockname to add to the base classname of the title - defaults to card_base_class.
+# - card_heading_modifiers - array of modifiers to add to the base classname of the title.
+# - card_heading_link_base_class - base class to add to the title link - defaults to 'title-link'.
+#
+# - card_body - the content of the body component.
+# - card_body_base_class - base classname of the body component. Defaults to "body".
+# - card_body_modifiers - array of modifiers to add to the base classname of the body.
+#
+# - card_date - (optional) Show a date field in the card
+#}
+{% set card_base_class = 'card' %}
+
+{{ attach_library('theme_name/card') }}
+<div {{ bem(card_base_class, card_modifiers, card_blockname, card_extra_classes) }}>
+  {# Image #}
+  {% block card_image %}
+    {% if card_image_src %}
+      {% include "@atoms/images/image/_image.twig" with {
+        image_blockname: card_base_class,
+        output_image_tag: card_image_output_image_tag,
+        image_src: card_image_src,
+        image_alt: card_image_alt|default(card_title),
+      } %}
+    {% endif %}
+  {% endblock %}
+  {# Content #}
+  <div {{ bem('content', card_content_modifiers|default([]), card_base_class) }}>
+    {# Heading #}
+    {% if card_title %}
+      {% block card_heading %}
+        {{ title_prefix }}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          heading_base_class: card_heading_base_class|default('heading'),
+          heading_modifiers: card_heading_modifiers,
+          heading_blockname: card_base_class,
+          heading_level: card_heading_level|default(3),
+          heading: card_title,
+          heading_url: card_heading_link|default(card_link_url),
+          heading_link_base_class: card_heading_link_base_class|default('heading-link'),
+          heading_link_blockname: card_base_class,
+        } %}
+        {{ title_suffix }}
+      {% endblock %}
+    {% endif %}
+    {#  Subtitle #}
+    {% if card_sub_title %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        heading_level: card_sub_title_level|default(4),
+        heading: card_sub_title,
+      } %}
+    {% endif %}
+    {# Body #}
+    {% block card_body %}
+      {% if card_text %}
+        {% include "@atoms/text/01-paragraph.twig" with {
+          paragraph_base_class: card_body_base_class|default('body'),
+          paragraph_modifiers: card_body_modifiers,
+          paragraph_blockname: card_base_class,
+          paragraph_content: card_text,
+        } %}
+      {% endif %}
+    {% endblock %}
+    {# Date #}
+    {% block card_date %}
+      {% if card_date and not card_date_show_above %}
+        <span {{ bem('date', [], card_base_class) }}>
+          {% include "@atoms/icon/icon.twig" with {
+            icon_name: 'calendar',
+            icon_role: item.role,
+            icon_decorative: true,
+          } %}
+          {{ card_date }}
+        </span>
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

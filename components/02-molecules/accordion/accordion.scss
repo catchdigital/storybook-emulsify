@@ -1,0 +1,72 @@
+@import "../../imports";
+
+.accordion {
+  position: relative;
+  color: clr(darkest);
+  border: 0.3rem solid transparent;
+  transition: all ease 0.4s;
+
+  &:hover {
+    background-color: $off-white;
+    transition: all ease 0.4s;
+  }
+
+  + .accordion {
+    margin-top: -7px;
+  }
+
+  &::before {
+    content: '';
+    height: 5.2rem;
+    width: 0.3rem;
+    background-color: clr(primary);
+    position: absolute;
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .icon {
+    height: 1.4rem;
+    width: 1.9rem;
+    position: absolute;
+    right: 2.6rem;
+    top: 3.1rem;
+    pointer-events: none;
+  }
+
+  &.is-open {
+    border: 0.3rem solid $brand-primary;
+    &:hover {
+      background-color: transparent;
+    }
+    &::before {
+      display: none;
+    }
+    .accordion__button {
+      border-bottom: none;
+    }
+
+    .icon {
+      transform: translate(90deg);
+    }
+  }
+}
+
+.accordion__button {
+  @include fntpair(body-large);
+
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: 2.6rem;
+  text-align: left;
+  background: transparent;
+  border: 1px solid $off-white;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+.accordion__content {
+  padding: 2.6rem;
+}
