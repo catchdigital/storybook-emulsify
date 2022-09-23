@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 1070px) {
-  .edit-tabs {
+  .drupal-edit-tabs {
     display: none !important;
   }
   .toolbar-oriented .toolbar-tray-vertical.is-active {
@@ -59,12 +59,14 @@
 }
 
 // Edit tabs
-.edit-tabs {
+.drupal-edit-tabs {
   display: table;
   width: 100%;
-  background: #23767461;
+  background: #0000005c;
   position: fixed;
   bottom: 0;
+  backdrop-filter: blur(10px);
+  padding: 2rem 0 1rem;
   z-index: 1050;
 
   ul {
@@ -77,16 +79,16 @@
 
       a {
         background: #fff;
-        color: $grey;
+        color: grey;
         text-decoration: none;
         border-radius: 1.2rem;
         padding: 0.4rem 1.2rem 0.5rem;
         margin-right: 1rem;
-        border: 0.2rem solid $light-grey;
+        border: 0.2rem solid lightgrey;
 
         &:hover {
-          border-color: $grey;
-          background: $grey;
+          border-color: grey;
+          background: grey;
           color: #fff;
         }
       }
@@ -116,26 +118,21 @@
   }
 }
 
-.toolbar-icon-9 .toolbar-icon-admin-toolbar-tools-help::before {
-  background-image: url('/themes/custom/coral-gables/logo.svg') !important;
-  background-position: center 7px;
-}
-
 // This should be removed and put in a better place if the user pages ever need proper styling.
 .user-page {
-  .edit-tabs {
+  .drupal-edit-tabs {
     display: block;
     background: none;
     position: relative;
     margin-bottom: 5rem;
   }
 
-  .edit-tabs ul li a {
+  .drupal-edit-tabs ul li a {
     border: 0;
 
     &.is-active {
-      background-color: clr(brand-secondary);
-      color: clr(wht);
+      background-color: grey;
+      color: #fff;
       cursor: pointer;
     }
   }
