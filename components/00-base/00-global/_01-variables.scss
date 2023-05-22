@@ -1,3 +1,4 @@
+@use "sass:math";
 
 // Paths
 $images: '../images';
@@ -50,13 +51,13 @@ $space-sextuple: $space * 6;
 $space-septuple: $space * 7;
 
 // Divided
-$space-one-half: $space/2;
-$space-one-third: $space/3;
-$space-one-fourth: $space/4;
-$space-one-fifth: $space/5;
-$space-one-sixth: $space/6;
-$space-one-seventh: $space/7;
-$space-one-eighth: $space/8;
+$space-one-half: math.div($space, 2);
+$space-one-third: math.div($space, 3);
+$space-one-fourth: math.div($space, 4);
+$space-one-fifth: math.div($space, 5);
+$space-one-sixth: math.div($space, 6);
+$space-one-seventh: math.div($space, 7);
+$space-one-eighth: math.div($space, 8);
 
 // Borders, box shadows, etc
 $border-radius: 0.2rem;
